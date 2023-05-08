@@ -46,3 +46,21 @@ next는 react를 백엔드에서 동작시켜서 미리 페이지를 만들어�
 
 2. seo에 좋아서 구글같은 검색엔진에 노출시키기 좋다.
 *SEO: 검색엔진 최적화를 뜻한다. 내 사이트가 관련된 키워드를 검색을하면 상위에 노출시킬수 있도록 컨텐츠를 최적화시키는 방식을 말한다.
+
+## Routing
+Nextjs에서는 네비게이팅시 Link를 통해 이동한다.
+a태그로 작성하게되면 페이지는 새로고침된다. 이렇게 작성되는건 클라이언트 사이드 네비게이션으로 동작되는게 아니다.
+
+* Next js v13버전부터 Link>a방식에서 Link단독 사용으로 변경 됨.
+https://nextjs.org/docs/messages/no-html-link-for-pages
+
+13이하 버전이라면 a태그를 Link안에 생성해서 처리해야한다.
+```jsx
+<Link href="/">
+    <a className="hi">Home</a>
+</Link>
+```
+
+### useRouter Hook
+useRouter hook은 next에 포함된 훅이다.
+라우팅된 네비게이터의 현재 정보를 알려준다.
