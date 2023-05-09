@@ -64,3 +64,22 @@ https://nextjs.org/docs/messages/no-html-link-for-pages
 ### useRouter Hook
 useRouter hook은 next에 포함된 훅이다.
 라우팅된 네비게이터의 현재 정보를 알려준다.
+
+## NestJs에서 style처리하기
+1. 직접 style props를 설정하기
+제일 직관적이지만... 구리다.
+
+2. modules 사용하기
+2-1. 적용방법
+파일명.module.css패턴으로 작성한다.
+>  xxxx.module.css
+
+작성한 파일을 적용할 파일에서 import해주고 적용할 컴포넌트 props에 `className={styles.클래스명}` 형태로 적용해준다.
+
+2-2. 2개 이상의 속성을 동시에 적용하기
+하나의 컴포넌트에 2개이상의 속성을 넣어줄때는 `
+className={`${styles.클래스명} ${stlyes.클래스명2}`}`
+위 형태로 넣어준다.
+
+또는 아래와같이 배열형태로 만들고 join("") 메소드를 활용하여 강제로 만드는 방법도 있다.
+`className=[styled.link, styled.active].join(" ") //공백 한칸을 꼭 띄우자!`
