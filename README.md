@@ -177,3 +177,9 @@ export default function CustomApp({ Component, pageProps }:AppProps) {
 `import Head from "next/head";`
 
 Head 컴포넌트는 헤더와 관련된 속성을 설정 할 수 있게 도와준다. react의 react-helmet과 비슷한 느낌이다.
+
+## public directory
+public 디렉토리의 이미지 파일과 같은 리소스를 접근할때는"/" 부터 접근해서 사용하면 된다.
+`ex) <img src="/vercel.svg" /> `
+
+## NextJS에서 API key와 같은 민감데이터 숨기기
