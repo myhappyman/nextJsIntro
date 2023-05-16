@@ -83,3 +83,97 @@ className={`${styles.클래스명} ${stlyes.클래스명2}`}`
 
 또는 아래와같이 배열형태로 만들고 join("") 메소드를 활용하여 강제로 만드는 방법도 있다.
 `className=[styled.link, styled.active].join(" ") //공백 한칸을 꼭 띄우자!`
+
+2-3. styled jsx
+styled jsx는 NestJs의 고유의 방법이다.
+
+stlye태그를 열고 jsx라는 props를 준다.
+내부에는 {``} 백틱을 열고 백틱 내부에 css를 정의한다.
+```JSX
+<style jsx>
+{`
+    nav{
+        background-color: tomato;
+    }
+    Link, a{
+        text-decoration: none;
+    }
+`}
+</style>
+```
+
+style jsx문법은 해당 컴포넌트 내부에만 영향을 주고 외부의 컴포넌트에는 영향을 주지 않는다.
+
+2-4. global style처리하기
+styled에 jsx와 global키워드를 추가하면 된다.
+하지만 해당 방식도 다른 컴포넌트 영역으로 넘어가게되면 해당 전역 스타일링이 풀리게 되는 반쪽짜리 기능이 된다.
+이럴 때 페이지별로 복붙하고 단순노동을 막아줄 방법이 있는데, _app.js이다.
+
+## _app.js
+pages디렉토리에 "_app.js"를 생성할 수 있다.
+무조건 해당 이름이어야 한다.
+다른 페이지를 렌더링하기전에 먼저 App을 보기 위함이다.
+그러고 나서 다음 렌더링할 페이지를 읽는다.
+
+별도로 설정없이도 Next.js는 저런 명명규칙으로 설정해주면 알아서 _app.js를 읽고 시작하게 된다.
+
+메인 메소드의 props들 중 Component, pageProps가 존재한다.
+이것들은 Nextjs에서 정해진 규칙이다.
+
+### typescript사용시
+_app.tsx로 생성하고 아래와 규칙으로 사용한다.
+```tsx
+import type { AppProps } from 'next/app'
+
+export default function CustomApp({ Component, pageProps }:AppProps) {
+  return (
+    <>
+      <span>공통으로 들어간다!</span>
+      <Component {...pageProps} />
+    </>
+  );
+}
+```
+
+## Layout Pattern
+NestJS를 사용하는 많은 사용자들이 사용하는 기법이다.
+```JSX
+//Layout.tsx라는 파일을 components에 작성한다.
+//NavBar는 공통으로 사용할 메뉴이다.
+import NavBar from "./NavBar";
+
+export default function Layout({children}:React.PropsWithChildren){
+    return (
+    <>
+        <NavBar />
+        <div>{children}</div>
+        <style jsx global>{`
+            a{
+                text-decoration: none;
+                color: #fff;
+            }
+        `}</style>
+    </>
+    );
+}
+```
+
+```JSX
+//_app.tsx에서 Layout을 연결하고 모든 컴포넌트를 children으로 넘긴다.
+import Layout from "../components/Layout";
+import type { AppProps } from 'next/app';
+
+export default function CustomApp({ Component, pageProps }:AppProps) {
+  return (
+    <Layout>
+        <Component {...pageProps} />
+    </Layout>
+  );
+}
+```
+실질적으로 추가하고 싶은 컴포넌트들은 레이아웃 컴포넌트를 통해 추가한다. _app.tsx를 늘리고싶지 않기 때문이다.
+
+## Head Component
+`import Head from "next/head";`
+
+Head 컴포넌트는 헤더와 관련된 속성을 설정 할 수 있게 도와준다. react의 react-helmet과 비슷한 느낌이다.
