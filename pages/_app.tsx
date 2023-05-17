@@ -5,7 +5,6 @@ import "../styles/globals.css";
 export default function CustomApp({ Component, pageProps }:AppProps) {
   return (
     <Layout>
-        {/* <SEO title="Home" /> */}
         <Component {...pageProps} />
     </Layout>
   );

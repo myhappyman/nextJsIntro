@@ -312,3 +312,23 @@ useEffect(() => {
 
 위의 모습으로 자동으로 redirect 처리 된다.
 <hr/>
+
+## getServerSideProps
+NextJS에서 SSR방식으로 동작할 수 있게 해주는 function이다.
+이름을 마음대로 변경할 수 없다.
+사용하고자 하는 컴포넌트에서 해당 함수를 작성해준다.
+_app.tsx의 pageProps에 props형태로 데이터를 넘겨주어 실 사용하는 컴포넌트에서 props를 받아와서 서버에서 처리된 값을 가져올 수 있다.
+SEO가 필요한 사이트나 페이지의 경우 해당 방식을 채택하면 된다. -> 서버에서 처리된 데이터를 받아서 UI를 이미 그려놓은 HTML을 받을 수 있기떄문이다.
+
+ex)
+```typescript
+export async function getServerSideProps(){
+    const {API_KEY} = process.env;
+    const {results} = await (await fetch(`http://localhost:3000/api/movies/${API_KEY}`)).json();
+    return {
+        props: {
+            results
+        }
+    }
+}
+```

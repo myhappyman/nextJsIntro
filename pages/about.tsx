@@ -1,5 +1,3 @@
-import SEO from "@/components/Seo";
-
 export default function About(){
     return (
         <div>

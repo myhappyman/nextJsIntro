@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+export interface IHome{
+    results: []
+}
 
 interface IMoive{
     id: number,
@@ -6,22 +8,11 @@ interface IMoive{
     poster_path: string
 }
 
-export default function Home(){
-    const [movies, setMovies] = useState<[]>();
-    
-    useEffect(() => {        
-        (async() => {
-            const response = await fetch("/api/movies");
-            const {results} = await response.json();
-            setMovies(results);
-        })();
-    }, []);
-
+export default function Home({results}:IHome){
     return (
         <div className="container">
-            {!movies && <h4>Loading...</h4>}
             {
-                movies?.map((movie: IMoive) => 
+                results?.map((movie: IMoive) => 
                     (<div className="movie" key={movie.id}>
                         <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
                         <h4>{movie.original_title}</h4>
@@ -51,4 +42,21 @@ export default function Home(){
             `}</style>     
         </div>
     );
+}
+
+//
+/**
+ * - getServerSideProp
+ * getServerSideProps라는 이름은 바꿀 수 없다. 
+ * NextJS를 SSR로 사용하게 해준다.(즉, 해당 코드는 server에서 돌아가게 된다!!!)
+ * async 옵션은 선택
+ */
+export async function getServerSideProps(){
+    const {API_KEY} = process.env;
+    const {results} = await (await fetch(`http://localhost:3000/api/movies/${API_KEY}`)).json();
+    return {
+        props: {
+            results
+        }
+    }
 }
