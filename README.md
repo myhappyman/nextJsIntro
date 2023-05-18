@@ -402,3 +402,51 @@ export default function Detail(){
 
 
 <hr/>
+
+# 동적 상세페이지 처리방법 useRouter의 강력한 힘
+페이지 이동을 위해서는 next의 Link컴포넌트를 활용하거나 useRouter를 사용하여 push메소드를 사용하면 된다.
+
+```jsx
+// <Link>사용
+export default function Home({result}){
+  return (
+    <Link href={`/movies/detail/${result.id}`}>이동</Link>
+  )
+}
+
+```
+
+```javascript
+const router = useRouter();
+const onClick = (id:string) => {
+  router.push(`/movies/detail/${id}`);
+}
+
+```
+
+위 2가지 방식 중 원하는 형태로 작성하면 된다.
+
+## useRouter.push, Link 컴포넌트 옵션
+
+Link컴포넌트와 push 메소드의 파라미터 구성은 아래와 같다.
+
+-push
+`push(url, as?, options?)`
+
+- url: @string, @object
+필수값으로 이동할 경로를 작성한다.
+object인 경우 pathname, query와 같은 옵션을 받을 수 있다.
+
+- as?: @string
+해당 값을 사용하면 url을 마스킹처리 한다.
+
+- options?
+
+-Link
+`<Link href="/movie" as="/"></Link>`
+- href: @string, @object
+필수값이며 문자열인 경우 경로를 작성한다.
+object로 받는경우 pathname, query의 옵션으로 작성한다.
+
+- as?: @string
+해당 값을 사용하게되면 url을 마스킹하여 넘겨준다.
