@@ -308,7 +308,7 @@ useEffect(() => {
 
 브라우저 url입력 : localhost:3000<font color="blue">/api/moives</font> <br/>
 -> mapping처리  <br/>
-실제로 요청하는 url: <font color="red">https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}/<font>
+실제로 요청하는 url: <font color="red">https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}/</font>
 
 위의 모습으로 자동으로 redirect 처리 된다.
 <hr/>
@@ -332,3 +332,66 @@ export async function getServerSideProps(){
     }
 }
 ```
+<br/><br/>
+
+## Dynamic Routes
+<br/>
+
+### <b><font color="orange">NextJS에서의 URL 설정</font></b>
+NextJS에서는 Router가 존재하지 않고, pages디렉토리에 작성한 js 또는 tsx파일에 맞춰서 자동으로 페이지들이 라우팅된다.
+
+```
+pages/index.js ----> "/"
+pages/about.js ----> "/about"
+```
+
+위 예시에서 볼 수 있듯이 index.js는 기본페이지를 뜻한다.
+<br/><br/>
+
+### <b><font color="orange">2Depth이상의 경로</font></b>
+/board/notice와 같이 뎁스가 늘어난다면 디렉토리를 활용하면 된다.
+
+```
+pages/board/notice.js ----> "/board/notice"
+pages/board/index.js ----> "/board"
+```
+
+board경로 뒤에 추가로 붙는 경로가 존재한다면 index.js를 통해 기본 경로도 설정이 가능하다.
+<br/><br/>
+
+### <b><font color="orange">동적으로 생성되는 경로</font></b>
+
+<p>- localhost:3000/board/notice/00001</p>
+<p>- localhost:3000/board/notice/00002</p>
+
+위와 같은 형태로 url을 설정해야하는 경우엔 동적으로 처리를 해야한다.
+
+pages/board/notice/`[notice_id].js`
+
+대괄호안에 변수명 형식인 `[변수명].js`로 작성하면 동적으로 경로의 값을 
+받아서 라우팅처리를 할 수 있다.
+
+<hr/>
+<b>사용 예시)</b>
+
+![image](https://github.com/myhappyman/nextJsIntro/assets/27759173/300275b2-88fe-4abe-8b05-8c6001f580dc)
+
+
+
+그렇다면 해당 js에서 파일의 변수명의 값은 어떻게 받아올까?
+next에서 제공하는 useRouter를 통해 query부분에서 가져올 수 있다.
+
+```javascript
+import {useRouter} from "next/router";
+
+export default function Detail(){
+    const router = useRouter();
+    const {movie_id} = router.query;
+    return `detail${movie_id}`;
+}
+```
+
+![image](https://github.com/myhappyman/nextJsIntro/assets/27759173/8bbb1ab7-8fd9-405c-ae39-f60cfcb71dc0)
+
+
+<hr/>
