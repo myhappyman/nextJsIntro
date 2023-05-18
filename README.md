@@ -1,25 +1,31 @@
 # NextJS를 학습해보는 프로젝트입니다.
+NextJS 마스터가 되어봅시다!!!
+<br/><br/>
 
-## 설치 및 구동
+# 설치 및 구동
 
-#### nextjs 프로젝트 생성
+### - NextJS 프로젝트 생성
 `npx create-next-app@lastest`
+<br/><br/>
 
-#### nextjs 타입스크립트 버전으로 프로젝트 생성
+### - NextJS <span style="color:blue">타입스크립트 버전</span>으로 프로젝트 생성
 `npx create-next-app@lastest --typescript`
+<br/><br/>
 
-#### 프로젝트 구동
+### - 프로젝트 구동
 `npm run dev`
-// 구동 후 동작중인 페이지 정보가 나온다 http://localhost:3000
 
+구동 후 동작중인 페이지 정보가 나온다.<br/>
+ex) http://localhost:3000
+<br/><br/>
 
-## framwork와 library의 차이
+# framwork와 library의 차이
+`Inversion of Control`(통제의 역전)이라고 불리며 누가 제어하는냐에 차이가 있다.
 - 라이브러리: 내가 사용하고 싶은 것들을 가져다가 개발하는 코드에 직접 적용하는 것들을 말한다. (stlyed-components, framer 등)
 - 프레임워크: 작성하는 구조가 정해져 있다. 그 구조안에 개발자의 코드를 불러온다. 규칙에 맞춰 작성하면 페이지가 동작하는 형태들을 말한다.(next, gatsby)
+<br/><br/>
 
-`Inversion of Control`(통제의 역전)이라고 불리며 누가 제어하는냐에 차이가 있다.
-
-## NextJS에서의 페이지 동작 원리
+# NextJS에서의 페이지 동작 원리
 처음 프로젝트 생성시 제공되는 구조에서 pages부분에 원하는 페이지들을 생성하면 알아서 라우팅이 되는 걸 볼 수 있다.
 
 말그대로 pages폴더 페이지로 사용될 파일명을 읽고 그 파일명을 기준으로 url을 만든다. index로 만들면 기본 페이지가 생성되고 about을 만들면 about이라는 url이 생기면서 해당부분에 페이지를 작성하면 된다.
@@ -30,14 +36,15 @@ react에서는 이런부분을 작성하기 위해 React Router Dom을 설치하
 1. pages디렉토리에 생성한 파일명으로 url이 생성된다.
 2. 생성한 파일의 컴포넌트 중 export default처리가 필요하며 컴포넌트명은 전혀 영향을 받지 않는다.
 3. react를 작성한다고 import from "react"를 하지 않아도 된다. 단, useState, useEffect와 같은 react 제공 메소드들을 사용할때는 import를 해줘야한다.
+<br/><br/>
 
+# NextJS의 장점
 
-## NextJS의 장점
 nextjs의 장점 중 하나는 작성한 앱의 페이지들이 미리 렌더링이 된다는 점이다.
 react app의 경우 client-side-render를 한다.
 인터넷 속도가 극한으로 느린경우 흰색화면을 보고 있고 구조도 보지 못해 페이지가 있긴한건지 의문이 들 수도 있다.
 
-*client-side-render: 브라우저가 유저가 보고있는 페이지의 UI를 javascript를 통해 만드는 모든것들을 말한다. 인터넷속도가 좋지 않거나 자바스크립트 사용 중지 모드라면 페이지가 보이지 않게 된다.
+>client-side-render: 브라우저가 유저가 보고있는 페이지의 UI를 javascript를 통해 만드는 모든것들을 말한다. 인터넷속도가 좋지 않거나 자바스크립트 사용 중지 모드라면 페이지가 보이지 않게 된다.
 
 반면 nextjs의 경우에는 자바스크립트를 사용안하거나 느린속도의 네트워크이더라도 최소한 html의 구조정도는 볼 수 있다. 어딘가에서 api형태로 데이터를 불러와야하고 그것을 통해 그려야하는 작업이 존재한다면 똑같이 느린부분은 있을수 있겠지만, 최소한 뼈대의 구조정도는 보고 있을 수 있다는 말이다.
 이런 것을 pre-rendering을 한다고 말하는데, useState와 같은 react메소드를 사용하더라도 초기값은 존재하기때문에 해당 초기값을 기준으로 html형태를 만들어준다.
@@ -46,10 +53,11 @@ react app의 경우 client-side-render를 한다.
 next는 react를 백엔드에서 동작시켜서 미리 페이지를 만들어주는데, 컴포넌트들을 미리 render시킨다.
 렌더링이 끝나면 HTML들이 만들어지고 그것들을 페이지에 넣어주면서 자바스크립트가 없거나 react가 로드되지 않더라도 기본적인 컨텐츠를 볼 수 있게 도와준다.
 
-2. seo에 좋아서 구글같은 검색엔진에 노출시키기 좋다.
-*SEO: 검색엔진 최적화를 뜻한다. 내 사이트가 관련된 키워드를 검색을하면 상위에 노출시킬수 있도록 컨텐츠를 최적화시키는 방식을 말한다.
+seo에 좋아서 구글같은 검색엔진에 노출시키기 좋다.
+>SEO: 검색엔진 최적화를 뜻한다. 내 사이트가 관련된 키워드를 검색을하면 상위에 노출시킬수 있도록 컨텐츠를 최적화시키는 방식을 말한다.
+<br/><br/>
 
-## Routing
+# Routing
 Nextjs에서는 네비게이팅시 Link를 통해 이동한다.
 a태그로 작성하게되면 페이지는 새로고침된다. 이렇게 작성되는건 클라이언트 사이드 네비게이션으로 동작되는게 아니다.
 
@@ -63,36 +71,41 @@ https://nextjs.org/docs/messages/no-html-link-for-pages
 </Link>
 ```
 
-### useRouter Hook
+## useRouter Hook
 useRouter hook은 next에 포함된 훅이다.
 라우팅된 네비게이터의 현재 정보를 알려준다.
+<br/><br/>
 
-
-## NestJs에서 style처리하기
-1. 직접 style props를 설정하기
+# NestJs에서 style처리하기
+- 직접 style props를 설정하기
 제일 직관적이지만... 구리다.
 
-2. modules 사용하기
-2-1. 적용방법
-파일명.module.css패턴으로 작성한다.
->  xxxx.module.css
+- modules 사용하기
 
+  - 적용방법
+파일명.module.css패턴으로 작성한다. ex) `xxxx.module.css`
 작성한 파일을 적용할 파일에서 import해주고 적용할 컴포넌트 props에 `className={styles.클래스명}` 형태로 적용해준다.
 
-2-2. 2개 이상의 속성을 동시에 적용하기
+  - 2개 이상의 속성을 동시에 적용하기
 하나의 컴포넌트에 2개이상의 속성을 넣어줄때는 `
 className={`${styles.클래스명} ${stlyes.클래스명2}`}`
-위 형태로 넣어준다.
-
+위 형태로 넣어준다.<br/>
 또는 아래와같이 배열형태로 만들고 join("") 메소드를 활용하여 강제로 만드는 방법도 있다.
 `className=[styled.link, styled.active].join(" ") //공백 한칸을 꼭 띄우자!`
 
-2-3. styled jsx
-styled jsx는 NestJs의 고유의 방법이다.
+  - styled jsx
+styled jsx는 NestJs의 고유의 방법이다.<br/>
+stlye태그를 열고 jsx라는 props를 준다.<br/>
+내부에는 {``} 백틱을 열고 백틱 내부에 css를 정의한다.<br/>
+style jsx문법은 해당 컴포넌트 내부에만 영향을 주고 외부의 컴포넌트에는 영향을 주지 않는다.
 
-stlye태그를 열고 jsx라는 props를 준다.
-내부에는 {``} 백틱을 열고 백틱 내부에 css를 정의한다.
+  - global style처리하기
+styled에 jsx와 global키워드를 추가하면 된다.
+하지만 해당 방식도 다른 컴포넌트 영역으로 넘어가게되면 해당 전역 스타일링이 풀리게 되는 반쪽짜리 기능이 된다.
+이럴 때 페이지별로 복붙하고 단순노동을 막아줄 방법이 있는데, _app.js이다.
+
 ```JSX
+//stlyed js example
 <style jsx>
 {`
     nav{
@@ -104,16 +117,9 @@ stlye태그를 열고 jsx라는 props를 준다.
 `}
 </style>
 ```
+<br/><br/>
 
-style jsx문법은 해당 컴포넌트 내부에만 영향을 주고 외부의 컴포넌트에는 영향을 주지 않는다.
-
-2-4. global style처리하기
-styled에 jsx와 global키워드를 추가하면 된다.
-하지만 해당 방식도 다른 컴포넌트 영역으로 넘어가게되면 해당 전역 스타일링이 풀리게 되는 반쪽짜리 기능이 된다.
-이럴 때 페이지별로 복붙하고 단순노동을 막아줄 방법이 있는데, _app.js이다.
-
-
-## _app.js
+# _app.js
 pages디렉토리에 "_app.js"를 생성할 수 있다.
 무조건 해당 이름이어야 한다.
 다른 페이지를 렌더링하기전에 먼저 App을 보기 위함이다.
@@ -123,8 +129,9 @@ pages디렉토리에 "_app.js"를 생성할 수 있다.
 
 메인 메소드의 props들 중 Component, pageProps가 존재한다.
 이것들은 Nextjs에서 정해진 규칙이다.
+<br/><br/>
 
-### typescript사용시
+## Typescript사용시
 _app.tsx로 생성하고 아래와 규칙으로 사용한다.
 ```tsx
 import type { AppProps } from 'next/app'
@@ -138,9 +145,9 @@ export default function CustomApp({ Component, pageProps }:AppProps) {
   );
 }
 ```
+<br/><br/>
 
-
-## Layout Pattern
+# Layout Pattern
 NestJS를 사용하는 많은 사용자들이 사용하는 기법이다.
 ```JSX
 //Layout.tsx라는 파일을 components에 작성한다.
@@ -177,27 +184,27 @@ export default function CustomApp({ Component, pageProps }:AppProps) {
 }
 ```
 실질적으로 추가하고 싶은 컴포넌트들은 레이아웃 컴포넌트를 통해 추가한다. _app.tsx를 늘리고싶지 않기 때문이다.
+<br/><br/>
 
-
-## Head Component
+# Head Component
 `import Head from "next/head";`
 
 Head 컴포넌트는 헤더와 관련된 속성을 설정 할 수 있게 도와준다. react의 react-helmet과 비슷한 느낌이다.
+<br/><br/>
 
-
-## public directory
+# public directory
 public 디렉토리의 이미지 파일과 같은 리소스를 접근할때는"/" 부터 접근해서 사용하면 된다.
 `ex) <img src="/vercel.svg" /> `
+<br/><br/>
 
-
-## NextJS에서 API key와 같은 민감데이터 숨기기
+# NextJS에서 API key와 같은 민감데이터 숨기기
 우린 rest api와 같은 형태로 데이터를 넘기게 되면 url요청 정보 형태에 따라서 주소값 자체에 api키와 같은 민감데이터를 넣게 되는 경우가 있다.
 
 이런 경우 하루 사용량 제한이 있거나 유료 서비스라면 문제가 발생하게된다. 타인에 의해 원하지 않게 서비스가 사용되어서 사용량이 초과되는 경우가 있을 수 있기 떄문이다.
 
 이럴때 요청 정보를 숨기는 방법이 있는데 next.config.js를 설정하면 된다.
 
-### <font color="orange">-next.config.js</font>
+## <font color="orange">-next.config.js</font>
 JSON형태의 설정파일이 아닌 Node.js모듈이다.
 ```javascript
 /** @type {import('next').NextConfig} */
@@ -211,7 +218,7 @@ module.exports = nextConfig
 추가적으로 object안에 설정을 하면 되는데, 아래와 같은 옵션들이 추가가 가능하다.
 
 
-1. redirects<br/>
+### <span style="color:orange;font-size:20pt">1. redirects</span>
 source, destination, permanents 속성이 있는 객체를 포함하는 배열을 반환하는 비동기 함수이다.
 <ul>
   <li>
@@ -245,16 +252,15 @@ async redirects(){
 }
 ```
 
-<font color="red">설정이 끝나면 꼭 서버 재시작을 해준다.</font>
+<span style="color:red">설정이 끝나면 꼭 서버 재시작을 해준다.</span>
 
-브라우저 url입력 : localhost:3000/<font color="blue">old-blog</font>/1234/comments/ttt <br/>
--> redirects처리  <br/>
-브라우저 변경 url: localhost:3000/<font color="red">new-sexy-blog</font>/1234/comments/ttt
-
+<p>브라우저 url입력 : localhost:3000/<span style="color:blue">old-blog</span>/1234/comments/ttt </p>
+<p>-> redirects처리  </p>
+<p>브라우저 변경 url: localhost:3000/<span style="color:red">new-sexy-blog</span>/1234/comments/ttt</p>
 위의 모습으로 자동으로 redirect 처리 된다.
 <hr/>
 
-2. rewrites <br/>
+### <span style="color:orange;font-size:20pt">2. rewrites</span>
 redirects와 비슷하지만 url이 변경되지 않는다.
 요청 경로를 파악하고 destination에 설정된 매핑 주소로 요청해준다.
 사용자에게 destination의 정보를 마스크처리하여 정보를 은닉시킬수 있다.
@@ -306,14 +312,15 @@ useEffect(() => {
 }, []);
 ```
 
-브라우저 url입력 : localhost:3000<font color="blue">/api/moives</font> <br/>
--> mapping처리  <br/>
-실제로 요청하는 url: <font color="red">https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}/</font>
+<p>브라우저 url입력 : localhost:3000<span style="color:blue">/api/moives</span></p>
+<p>-> mapping처리</p>
+<p>실제로 요청하는 url: <span style="color:red">https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}/</span></p>
 
 위의 모습으로 자동으로 redirect 처리 된다.
 <hr/>
+<br/><br/>
 
-## getServerSideProps
+# getServerSideProps
 NextJS에서 SSR방식으로 동작할 수 있게 해주는 function이다.
 이름을 마음대로 변경할 수 없다.
 사용하고자 하는 컴포넌트에서 해당 함수를 작성해준다.
@@ -334,10 +341,10 @@ export async function getServerSideProps(){
 ```
 <br/><br/>
 
-## Dynamic Routes
+# Dynamic Routes
 <br/>
 
-### <b><font color="orange">NextJS에서의 URL 설정</font></b>
+### <b><span style="color:orange">NextJS에서의 URL 설정</span></b>
 NextJS에서는 Router가 존재하지 않고, pages디렉토리에 작성한 js 또는 tsx파일에 맞춰서 자동으로 페이지들이 라우팅된다.
 
 ```
@@ -348,7 +355,7 @@ pages/about.js ----> "/about"
 위 예시에서 볼 수 있듯이 index.js는 기본페이지를 뜻한다.
 <br/><br/>
 
-### <b><font color="orange">2Depth이상의 경로</font></b>
+### <b><span style="color:orange">2Depth이상의 경로</span></b>
 /board/notice와 같이 뎁스가 늘어난다면 디렉토리를 활용하면 된다.
 
 ```
@@ -359,7 +366,7 @@ pages/board/index.js ----> "/board"
 board경로 뒤에 추가로 붙는 경로가 존재한다면 index.js를 통해 기본 경로도 설정이 가능하다.
 <br/><br/>
 
-### <b><font color="orange">동적으로 생성되는 경로</font></b>
+### <b><span style="color:orange">동적으로 생성되는 경로</span></b>
 
 <p>- localhost:3000/board/notice/00001</p>
 <p>- localhost:3000/board/notice/00002</p>
