@@ -450,3 +450,7 @@ object로 받는경우 pathname, query의 옵션으로 작성한다.
 
 - as?: @string
 해당 값을 사용하게되면 url을 마스킹하여 넘겨준다.
+
+# Catch All URL
+
+catch-all URL은 뭐든 캐치하는 url이다.

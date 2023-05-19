@@ -14,12 +14,7 @@ interface IMoive{
 export default function Home({results}:IHome){
     const router = useRouter();
     const onClick = (id:string, title:string) => {
-        router.push({
-            pathname: `/movies/${id}`,
-            query: {
-                title
-            }
-        }, `/movies/${id}`);
+        router.push(`/movies/${title}/${id}`);
     }
     return (
         <div className="container">
